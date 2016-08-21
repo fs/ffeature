@@ -1,5 +1,8 @@
 # FFeature
 
+[![Build Status](https://travis-ci.org/fs/ffeature.svg?branch=master)](https://travis-ci.org/fs/ffeature)
+[![Dependency Status](https://gemnasium.com/badges/github.com/fs/ffeature.svg)](https://gemnasium.com/github.com/fs/ffeature)
+
 This is simple wrapper around Flipper for Rails projects to remove ugly global variables like `$flipper`.
 
 ## Usage
@@ -48,3 +51,9 @@ constraints(->(request) { FFeature.ip_allowed?(request.remote_ip) }) do
   mount Flipper::UI.app(FFeature.flipper) => "/flipper"
 end
 ```
+## Credits
+
+FFeature is maintained and was written by [Flatstack](http://www.flatstack.com) with the help of our
+[contributors](http://github.com/fs/rails-base/contributors).
+
+[<img src="http://www.flatstack.com/logo.svg" width="100"/>](http://www.flatstack.com)
