@@ -50,3 +50,9 @@ constraints(->(request) { FFeature.ip_allowed?(request.remote_ip) }) do
   mount Flipper::UI.app(FFeature.flipper) => "/flipper"
 end
 ```
+## Credits
+
+FFeature is maintained and was written by [Flatstack](http://www.flatstack.com) with the help of our
+[contributors](http://github.com/fs/rails-base/contributors).
+
+[<img src="http://www.flatstack.com/logo.svg" width="100"/>](http://www.flatstack.com)
