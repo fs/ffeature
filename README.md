@@ -1,5 +1,7 @@
 # FFeature
 
+[![Build Status](https://travis-ci.org/fs/ffeature.svg?branch=master)](https://travis-ci.org/fs/ffeature)
+
 This is simple wrapper around Flipper for Rails projects to remove ugly global variables like `$flipper`.
 
 ## Usage
