@@ -54,6 +54,6 @@ end
 ## Credits
 
 FFeature is maintained and was written by [Flatstack](http://www.flatstack.com) with the help of our
-[contributors](http://github.com/fs/rails-base/contributors).
+[contributors](http://github.com/fs/ffeature/contributors).
 
 [<img src="http://www.flatstack.com/logo.svg" width="100"/>](http://www.flatstack.com)
