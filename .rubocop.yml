@@ -44,3 +44,7 @@ Style/AlignParameters:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Description: Checks if examples contain too many `expect` calls.
+  Enabled: false
