@@ -4,6 +4,7 @@ AllCops:
   DisplayCopNames: true
   Exclude:
     - bin/**/*
+    - vendor/**/*
 
 Rails:
   Enabled: false
@@ -42,4 +43,8 @@ Style/AlignParameters:
     - with_fixed_indentation
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Description: Checks if examples contain too many `expect` calls.
   Enabled: false
