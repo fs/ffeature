@@ -10,7 +10,8 @@ This is simple wrapper around Flipper for Rails projects to remove ugly global v
 * `ffeature?(feature, user = current_user)` helper in views and controllers
 * `FFeature.enabled?(feature, user)` helper for PORO
 
-Here `user` or `current_user` should respond to `tester?` method to determine feature status for specific user.
+In case `user` or `current_user` responds to `#tester?` and returns `true` it will be registered in `testers`
+Flipper group. For that group all features defined in `FFeature.features` will be enabled by default.
 
 ## Configuration
 
@@ -37,7 +38,7 @@ end
 ```
 
 Following options are available:
-* `features` – list of features registered for testers
+* `features` – list of features registered and enabled by default for testers.
 * `ip_whitelist` – list of IP addresses, could be used to configure FlipperUI route constraints
 * `dev_mode` – if enabled all features considered enabled for all users
 

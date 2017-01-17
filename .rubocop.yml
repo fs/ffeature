@@ -31,10 +31,7 @@ Metrics/LineLength:
   Max: 120
 
 Lint/EndAlignment:
-  AlignWith: variable
-  SupportedStyles:
-    - keyword
-    - variable
+  EnforcedStyleAlignWith: variable
 
 Style/AlignParameters:
   EnforcedStyle: with_fixed_indentation

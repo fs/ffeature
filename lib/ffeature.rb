@@ -1,11 +1,9 @@
-require "bundler/setup"
-Bundler.setup
-
 require "flipper"
 require "active_support/core_ext/module/attribute_accessors"
 
 require "ffeature/version"
 require "ffeature/feature"
+require "ffeature/railtie" if defined?(Rails)
 
 module FFeature
   cattr_accessor :ip_whitelist
@@ -15,7 +13,7 @@ module FFeature
   self.dev_mode = false
 
   cattr_accessor :features
-  self.features = %i(user_management)
+  self.features = %i()
 
   cattr_accessor :flipper
   self.flipper = nil
@@ -23,7 +21,9 @@ module FFeature
   def self.configure
     yield(self)
 
-    Flipper.register(:testers, &:tester?)
+    Flipper.register(:testers) do |user|
+      user.respond_to?(:tester?) && user.tester?
+    end
 
     features.each do |feature|
       flipper[feature].enable(flipper.group(:testers))

@@ -3,7 +3,7 @@ module FFeature
     extend ActiveSupport::Concern
 
     included do
-      helper_method :feature?
+      helper_method :ffeature?
     end
 
     private
