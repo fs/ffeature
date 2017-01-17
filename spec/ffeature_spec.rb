@@ -1,7 +1,9 @@
 require "spec_helper"
 require "flipper/adapters/memory"
 
-describe FFeature do # rubocop:disable RSpec/FilePath
+# rubocop:disable RSpec/FilePath
+# rubocop:disable Metrics/BlockLength
+describe FFeature do
   let(:tester) { SampleUser.new(1, true) }
   let(:user) { SampleUser.new(2, false) }
 
@@ -15,9 +17,15 @@ describe FFeature do # rubocop:disable RSpec/FilePath
     end
   end
 
-  it "has config" do
+  it "has dev_mode" do
     expect(described_class.dev_mode).to be_falsey
+  end
+
+  it "has flipper" do
     expect(described_class.flipper).to be
+  end
+
+  it "has feature" do
     expect(described_class.features).to eql([:archived])
   end
 
