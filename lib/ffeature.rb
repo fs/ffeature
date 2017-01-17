@@ -1,6 +1,3 @@
-require "bundler/setup"
-Bundler.setup
-
 require "flipper"
 require "active_support/core_ext/module/attribute_accessors"
 
@@ -24,7 +21,9 @@ module FFeature
   def self.configure
     yield(self)
 
-    Flipper.register(:testers, &:tester?)
+    Flipper.register(:testers) do |user|
+      user.respond_to?(:tester?) && user.tester?
+    end
 
     features.each do |feature|
       flipper[feature].enable(flipper.group(:testers))
