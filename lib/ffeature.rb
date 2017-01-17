@@ -6,6 +6,7 @@ require "active_support/core_ext/module/attribute_accessors"
 
 require "ffeature/version"
 require "ffeature/feature"
+require "ffeature/railtie" if defined?(Rails)
 
 module FFeature
   cattr_accessor :ip_whitelist
