@@ -16,7 +16,7 @@ module FFeature
   self.dev_mode = false
 
   cattr_accessor :features
-  self.features = %i(user_management)
+  self.features = %i()
 
   cattr_accessor :flipper
   self.flipper = nil
