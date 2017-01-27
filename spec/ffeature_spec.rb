@@ -40,4 +40,8 @@ describe FFeature do
   it "does not toggle feature for other users" do
     expect(described_class.enabled?(:archived, user)).to be_falsey
   end
+
+  it "does not toggle feature for nil user" do
+    expect(described_class.enabled?(:archived, nil)).to be_falsey
+  end
 end
