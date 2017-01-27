@@ -38,7 +38,7 @@ module FFeature
     ip_whitelist.include?(ip)
   end
 
-  def self.enabled?(feature, user)
+  def self.enabled?(feature, user = nil)
     Feature.new(feature).enabled?(user)
   end
 end
