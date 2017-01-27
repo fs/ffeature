@@ -29,19 +29,41 @@ describe FFeature do
     expect(described_class.features).to eql([:archived])
   end
 
-  it "toggles feature for testers" do
-    expect(described_class.enabled?(:archived, tester)).to be_truthy
+  context "when feature in default state (enabled for testers only)" do
+    it "toggles feature for testers" do
+      expect(described_class.enabled?(:archived, tester)).to be_truthy
+    end
+
+    it "toggles feature for decorated testers" do
+      expect(described_class.enabled?(:archived, tester.decorate)).to be_truthy
+    end
+
+    it "does not toggle feature for other users" do
+      expect(described_class.enabled?(:archived, user)).to be_falsey
+    end
+
+    it "does not toggle feature for nil" do
+      expect(described_class.enabled?(:archived, nil)).to be_falsey
+      expect(described_class.enabled?(:archived)).to be_falsey
+    end
   end
 
-  it "toggles feature for decorated testers" do
-    expect(described_class.enabled?(:archived, tester.decorate)).to be_truthy
-  end
+  context "when feature disabled" do
+    before do
+      described_class.flipper[:archived].disable
+    end
 
-  it "does not toggle feature for other users" do
-    expect(described_class.enabled?(:archived, user)).to be_falsey
-  end
+    it "does not toggle feature for testers" do
+      expect(described_class.enabled?(:archived, tester)).to be_falsey
+    end
 
-  it "does not toggle feature for nil user" do
-    expect(described_class.enabled?(:archived, nil)).to be_falsey
+    it "does not toggle feature for other users" do
+      expect(described_class.enabled?(:archived, user)).to be_falsey
+    end
+
+    it "does not toggle feature for nil user" do
+      expect(described_class.enabled?(:archived, nil)).to be_falsey
+      expect(described_class.enabled?(:archived)).to be_falsey
+    end
   end
 end

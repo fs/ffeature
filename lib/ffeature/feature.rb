@@ -7,11 +7,14 @@ module FFeature
       @feature = feature
     end
 
-    def enabled?(user)
+    def enabled?(user = nil)
       return true if FFeature.dev_mode
-      return false unless flipper_user?(user)
 
-      FFeature.flipper[feature].enabled?(user.to_model)
+      if flipper_user?(user)
+        FFeature.flipper[feature].enabled?(user.to_model)
+      else
+        FFeature.flipper[feature].enabled?
+      end
     end
 
     private
